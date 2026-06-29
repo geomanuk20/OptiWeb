@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert any image format to optimized WebP format instantly. Speed up your website using our premium batch image optimization tool.">
+    <title>NextGen WebP Converter & Image Optimizer</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Links to External Stylesheets -->
+    <link rel="stylesheet" href="{% static 'converter/css/style.css' %}">
+</head>
+<body>
+    <div class="background-decorations">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 10L12 7L9 10" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7V17" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00f2fe"/>
+                            <stop offset="1" stop-color="#4facfe"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>OptiWebP</span>
+            </div>
+            <h1>Optimize & Convert Any Image to WebP</h1>
+            <p class="subtitle">Upload JPEG, PNG, GIF, BMP, or TIFF images. Reduce file size up to 90% while preserving stunning visual quality.</p>
+        </header>
+
+        <main class="app-content">
+            <!-- Settings panel -->
+            <section class="settings-section glass-panel">
+                <div class="panel-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    <h2>Compression Settings</h2>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="setting-control quality-control">
+                        <label for="quality-range">
+                            <span>WebP Quality</span>
+                            <span id="quality-val" class="badge">80%</span>
+                        </label>
+                        <div class="range-container">
+                            <input type="range" id="quality-range" min="5" max="100" value="80" class="styled-range">
+                        </div>
+                        <span class="control-help">Lower quality results in smaller files, higher quality looks identical to original.</span>
+                    </div>
+
+                    <div class="setting-control switch-control">
+                        <div class="switch-wrapper">
+                            <span class="switch-label">Lossless Compression</span>
+                            <label class="switch">
+                                <input type="checkbox" id="lossless-check">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <span class="control-help">Perfect pixel preservation (recommended for graphics, logos, and screenshots). Quality setting is ignored when Lossless is enabled.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Box -->
+            <section class="upload-section">
+                <div id="drop-zone" class="drop-zone glass-panel">
+                    <div class="drop-zone-content">
+                        <div class="upload-icon-container">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="upload-icon">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3>Drag & drop your images here</h3>
+                        <p class="drop-zone-sub">or <span class="browse-link">browse from files</span></p>
+                        <p class="formats-info">Supports JPEG, PNG, GIF, BMP, TIFF, WebP, etc. (up to 50MB each)</p>
+                    </div>
+                </div>
+                <input type="file" id="file-input" multiple accept="image/*" style="display: none;">
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="results-section glass-panel hidden">
+                <div class="results-header">
+                    <div class="title-with-count">
+                        <h2>Queue & Output</h2>
+                        <span id="queue-count" class="badge">0 Files</span>
+                    </div>
+                    <div class="results-actions">
+                        <button id="clear-btn" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            Clear All
+                        </button>
+                        <button id="download-all-btn" class="btn btn-primary" disabled>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download All (ZIP)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-card">
+                        <span class="summary-label">Total Uploaded Size</span>
+                        <span id="total-original-size" class="summary-val">0 B</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Total WebP Size</span>
+                        <span id="total-optimized-size" class="summary-val">0 B</span>
+                    </div>
+                    <div class="summary-card highlight">
+                        <span class="summary-label">Total Saving</span>
+                        <span id="total-saving-percent" class="summary-val">0%</span>
+                    </div>
+                </div>
+
+                <!-- Files List Grid -->
+                <div id="files-grid" class="files-grid">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Image Comparison Modal -->
+    <div id="compare-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-wrapper">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h3 id="compare-filename">Compare Image Quality</h3>
+                    <button id="close-modal" class="close-btn" aria-label="Close Comparison">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Before/After Slider Container -->
+                    <div class="comparison-slider-container">
+                        <!-- Before image (Original) -->
+                        <div class="comparison-img-wrapper before-wrapper">
+                            <img id="compare-before-img" src="" alt="Original Image">
+                            <span class="slider-badge label-before">Original</span>
+                        </div>
+                        
+                        <!-- After image (Optimized WebP) -->
+                        <div class="comparison-img-wrapper after-wrapper">
+                            <img id="compare-after-img" src="" alt="Optimized WebP Image">
+                            <span class="slider-badge label-after">Optimized WebP</span>
+                        </div>
+                        
+                        <!-- Drag Slider Handle -->
+                        <div class="slider-handle">
+                            <div class="handle-line"></div>
+                            <div class="handle-button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="8 17 3 12 8 7"></polyline>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Invisible input to map mouse drag to position -->
+                        <input type="range" min="0" max="100" value="50" class="slider-input" id="slider-range-control" aria-label="Adjust comparison split">
+                    </div>
+                    
+                    <div class="comparison-stats">
+                        <div class="stat-box">
+                            <span class="stat-lbl">Original Size</span>
+                            <span id="compare-orig-size" class="stat-val">-</span>
+                        </div>
+                        <div class="stat-divider">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-lbl">WebP Size</span>
+                            <span id="compare-webp-size" class="stat-val">-</span>
+                        </div>
+                        <div class="stat-box highlight">
+                            <span class="stat-lbl">Reduction</span>
+                            <span id="compare-saving" class="stat-val">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for file list item (cloned via JS) -->
+    <template id="file-card-template">
+        <div class="file-card glass-panel" id="file-card-ID">
+            <div class="card-preview">
+                <img class="img-preview" src="" alt="Preview">
+                <div class="status-overlay">
+                    <span class="spinner-icon"></span>
+                    <span class="status-text">Uploading...</span>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="file-meta">
+                    <span class="file-name">filename.png</span>
+                    <span class="file-type-badge">PNG</span>
+                </div>
+                
+                <div class="conversion-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="size-comparison hidden">
+                    <div class="size-stats">
+                        <span class="orig-sz">0 KB</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                        <span class="webp-sz">0 KB</span>
+                    </div>
+                    <span class="saving-badge">-0%</span>
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn-card compare-btn hidden">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-card-icon">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Compare
+                    </button>
+                    <button class="btn-card download-btn hidden">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-card-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download
+                    </button>
+                    <button class="btn-card remove-btn" aria-label="Remove item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-card-icon delete">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- External JavaScript -->
+    <script src="{% static 'converter/js/app.js' %}"></script>
+</body>
+</html>
